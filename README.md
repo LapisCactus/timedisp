@@ -1,8 +1,8 @@
 # timedisp
 Timecode display tool
-�^�C���R�[�h�\��
+タイムコード表示
 
-������̃J�����œ����ɎB�e����Ƃ��ɁA�ŏ��܂��͍Ō�ɂ��̃A�v�����B���Ă����ƁA�f�����m�̎��������킹�₷���Ȃ�܂��B �@�ނ��Ȃ��Ă������A����y�ȓ����A�v���Ƃ��Ă����p���������B
+複数台のカメラで同時に撮影するときに、最初または最後にこのアプリを撮っておくと、映像同士の時刻を合わせやすくなります。 機材がなくてもいい、お手軽な同期アプリとしてご利用ください。
 
 URL: https://LapisCactus.github.io/timedisp/
 
