@@ -1,7 +1,7 @@
 {
   "name": "タイムコード表示",
   "short_name": "タイムコード",
-  "start_url": "timer.html",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#fff",
   "description": "Timecode viewer by LapisCactus",

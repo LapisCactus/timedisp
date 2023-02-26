@@ -1,8 +1,8 @@
-const PRECACHE = 'timer-20211222';
+const PRECACHE = 'timer-20230226';
 const RUNTIME = 'runtime';
 
 const PRECACHE_URLS = [
-  'timer.html'
+  'index.html'
 ];
 
 // インストール
