@@ -73,6 +73,11 @@
             v-model="dark_theme"
             :label="`ダークモード`"
           ></v-checkbox>
+          <v-switch
+            v-model="isWakeLockActive"
+            :label="isWakeLockActive ? 'WakeLock ON' : 'WakeLock OFF'"
+            @click="toggleWakeLock"
+          ></v-switch>
         </v-card-text>
         <v-card-title>使い方</v-card-title>
         <v-card-text>
@@ -143,7 +148,9 @@
       timestring: "",
       drawer: null,
       dark_theme: true,
-      use_30fps_pcontrol: true
+      use_30fps_pcontrol: true,
+      isWakeLockActive: false,
+      wakeLock: null,
     }),
     mounted: function(){
       this.loadAllState();
@@ -257,7 +264,38 @@
           console.log("load darkmode ");
           this.dark_theme = dm == "true";
         }
-      }
+      },
+      // WakeLockのトグル
+      async toggleWakeLock() {
+        if (!('wakeLock' in navigator)) {
+          setTimeout(() => {
+            this.isWakeLockActive = false;
+          }, 1);
+          return false;
+        }
+
+        if (this.isWakeLockActive) {
+          // WakeLockを有効にする
+          try {
+            this.wakeLock = await navigator.wakeLock.request('screen');
+            console.log('WakeLockが有効になりました');
+            this.wakeLock.addEventListener('release', () => {
+              console.log('WakeLockが解除されました');
+              this.isWakeLockActive = false;
+            });
+          } catch (err) {
+            console.error('WakeLockのリクエストに失敗しました:', err);
+            this.isWakeLockActive = false;
+          }
+        } else {
+          // WakeLockを解除する
+          if (this.wakeLock) {
+            await this.wakeLock.release();
+            console.log('WakeLockを解除しました');
+            this.wakeLock = null;
+          }
+        }
+      },
     }
   });
   registerServiceWorker();
