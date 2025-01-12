@@ -73,11 +73,13 @@
             v-model="dark_theme"
             :label="`ダークモード`"
           ></v-checkbox>
-          <v-switch
-            v-model="isWakeLockActive"
-            :label="isWakeLockActive ? 'WakeLock ON' : 'WakeLock OFF'"
+          <v-btn
+            :color="isWakeLockActive ? 'green' : 'glay'"
+            :dark="isWakeLockActive"
             @click="toggleWakeLock"
-          ></v-switch>
+          >
+          Keep Screen On:{{ isWakeLockActive ? 'Yes' : 'No' }}
+          </v-btn>
         </v-card-text>
         <v-card-title>使い方</v-card-title>
         <v-card-text>
