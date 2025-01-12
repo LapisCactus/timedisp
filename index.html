@@ -78,7 +78,8 @@
             :dark="isWakeLockActive"
             @click="toggleWakeLock"
           >
-          Keep Screen On:{{ isWakeLockActive ? 'Yes' : 'No' }}
+            <v-icon v-if="isWakeLockActive">mdi-monitor-lock</v-icon>
+            <v-icon v-else>mdi-monitor-off</v-icon>
           </v-btn>
         </v-card-text>
         <v-card-title>使い方</v-card-title>
